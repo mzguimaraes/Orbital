@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhysicsAttractant : PhysicsBody {
 
-	void Update() {
-		acceleration += Gravity.Instance.GetGravForceOn(this);
+namespace Orbital
+{
+	public class PhysicsAttractant : PhysicsBody
+	{
+
+		void Update()
+		{
+			acceleration += Gravity.Instance.GetGravForceOn(this);
+		}
 	}
 }
