@@ -5,19 +5,32 @@ using UnityEngine;
 
 namespace Orbital
 {
-	public class PhysicsCollider : MonoBehaviour
+	public abstract class PhysicsCollider : MonoBehaviour
 	{
+		public Vector2 offset = Vector2.zero;
 
-		// Use this for initialization
-		void Start()
+		public abstract bool Overlapping(PhysicsCollider other); 
+
+		public abstract Vector2 Center
 		{
-
+			get;
 		}
 
-		// Update is called once per frame
-		void Update()
-		{
-
+		protected virtual void Start() {
+			CollisionSystem.Instance.RegisterCollider(this);
 		}
+
+		protected virtual void OnDisable() {
+			if (CollisionSystem.Instance)
+				CollisionSystem.Instance.RemoveCollider(this);
+		}
+
+		protected abstract void DrawWireframe();
+
+		protected void OnDrawGizmosSelected()
+		{
+			DrawWireframe();
+		}
+
 	}
 }

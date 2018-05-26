@@ -1,9 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-public class ScriptableObjectSingleton<T> : ScriptableObject where T : ScriptableObject {
-
-	//https://baraujo.net/unity3d-making-singletons-from-scriptableobjects-automatically/
+public class Singleton<T> : MonoBehaviour where T : MonoBehaviour {
 
 	private static T _instance;
 
@@ -18,16 +16,17 @@ public class ScriptableObjectSingleton<T> : ScriptableObject where T : Scriptabl
 			if (!_instance) {
 				_instance = Resources.FindObjectsOfTypeAll<T>().FirstOrDefault();
 			}
-
 			if (!_instance) {
-				_instance = CreateInstance<T>();
+				GameObject singleton = new GameObject();
+				_instance = singleton.AddComponent<T>();
+				singleton.name = "Singleton Game Object"; //todo: find a way to name it after T
+				DontDestroyOnLoad(singleton);
 			}
-
 			return _instance;
 		}
 	}
 
-	private void OnDestroy()
+	void OnDestroy()
 	{
 		isApplicationQuitting = true;
 	}

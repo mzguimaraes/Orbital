@@ -51,9 +51,18 @@ namespace Orbital
 			acceleration = Vector2.zero;
 		}
 
-		//private void OnCollisionEnter2D(Collision2D collision) {
+		private void OnPhysicsCollisionEnter(PhysicsCollider other) {
+			//TODO: reflection
+			Debug.Log(name + " hit " + other.name);
+		}
 
-		//}
+		private void OnPhysicsCollisionStay(PhysicsCollider other) {
+			Debug.Log(name + " continues collision with " + other.name);
+		}
+
+		private void OnPhysicsCollisionExit(PhysicsCollider other) {
+			Debug.Log(name + " ends collision with " + other.name);
+		}
 
 	}
 }
