@@ -30,7 +30,7 @@ namespace Orbital
 
 			public override bool Equals(object obj)
 			{
-				return obj is CollisionSystem && this == (CollisionInfo)obj;
+				return obj is CollisionInfo && this == (CollisionInfo)obj;
 			}
 
 			public override int GetHashCode()
@@ -77,6 +77,7 @@ namespace Orbital
 						else
 						{
 							//new collision
+							//Debug.Log("Adding collision");
 							atlas.Add(info);
 							lcol.SendMessage("OnPhysicsCollisionEnter", rcol,
 				 							 SendMessageOptions.DontRequireReceiver);
