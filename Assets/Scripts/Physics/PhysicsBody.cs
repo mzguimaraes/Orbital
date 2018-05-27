@@ -53,6 +53,7 @@ namespace Orbital
 
 		private void OnPhysicsCollisionEnter(PhysicsCollider other) {
 			//TODO: reflection
+
 			//Debug.Log(name + " hit " + other.name);
 		}
 
