@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 //Custom Physics system for Orbital game
 namespace Orbital
@@ -18,6 +16,12 @@ namespace Orbital
 		}
 
 		[SerializeField] protected float mu = 0.05f;
+
+		public PhysicsCollider Collider {
+			get {
+				return GetComponent<PhysicsCollider>();
+			}
+		}
 
 		protected Vector2 velocity;
 		protected Vector2 acceleration;
@@ -53,7 +57,7 @@ namespace Orbital
 
 		private void OnPhysicsCollisionEnter(PhysicsCollider other) {
 			//TODO: reflection
-
+			Phys.Reflect(this, other);
 			//Debug.Log(name + " hit " + other.name);
 		}
 
