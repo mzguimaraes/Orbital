@@ -8,9 +8,12 @@ namespace Orbital
 	public class PhysicsAttractant : PhysicsBody
 	{
 
+		public bool attractionActive = true;
+
 		void Update()
 		{
-			acceleration += Gravity.Instance.GetGravForceOn(this);
+			if (attractionActive)
+				acceleration += Gravity.Instance.GetGravForceOn(this);
 		}
 	}
 }

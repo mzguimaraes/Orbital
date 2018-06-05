@@ -57,6 +57,10 @@ namespace Orbital
 		}
 
 		void Update() {
+			//TODO: make more efficient (don't test EVERY single collider pair every frame)
+			//ideas: use a different data structure?  (HashSet lookup is O(1) though, perhaps worse in practice)
+			//find a smarter way to choose comparisons?  Recursive Sectoring?
+
 			//check each collider pair for collisions
 			for (int l = 0; l < cols.Count; l++) {
 				for (int r = l + 1; r < cols.Count; r++) {

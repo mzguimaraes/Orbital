@@ -123,9 +123,9 @@ GameObject:
   - component: {fileID: 9275396}
   - component: {fileID: 9275395}
   - component: {fileID: 9275394}
-  - component: {fileID: 9275397}
   - component: {fileID: 9275393}
   - component: {fileID: 9275398}
+  - component: {fileID: 9275397}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -209,10 +209,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9275392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a4fbc289c54d46f38df2163c8d37d04, type: 3}
+  m_Script: {fileID: 11500000, guid: a73d037e30e8b44b8873c2c3d60257b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  flySpeed: 1
+  groundedSpeed: 1
 --- !u!114 &9275398
 MonoBehaviour:
   m_ObjectHideFlags: 0
