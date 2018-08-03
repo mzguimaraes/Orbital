@@ -39,7 +39,7 @@ namespace Orbital
 			}
 		}
 
-		//Collision atlas
+		//Collision atlas -- stores all current collisions
 		private HashSet<CollisionInfo> atlas;
 
 		private List<PhysicsCollider> cols;

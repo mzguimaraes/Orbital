@@ -16,7 +16,9 @@ namespace Orbital
 			get;
 		}
 
-		protected virtual void Start() {
+		public abstract Vector2 GetNormalAtPoint(Vector2 point, bool givenAsOffset = false);
+
+		protected virtual void OnEnable() {
 			CollisionSystem.Instance.RegisterCollider(this);
 		}
 

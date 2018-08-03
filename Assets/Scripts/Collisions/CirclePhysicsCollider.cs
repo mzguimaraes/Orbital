@@ -19,13 +19,28 @@ namespace Orbital
 			}
 		}
 
+		public override Vector2 GetNormalAtPoint(Vector2 point, bool givenAsOffset = false) {
+			if (givenAsOffset) {
+				point += Center;
+			}
+
+			float d = Vector2.Distance(Center, point);
+			if (d > radius) {
+				Debug.LogError("Point provided not on circle collider\nPoint: " + 
+				               point.ToString() + "\nCircle collider: " + 
+				               Center.ToString() + " " + radius.ToString() + 
+				               "\nDistance: " + d);
+			}
+			return (point - Center) / d;
+		}
+
 		public override bool Overlapping(PhysicsCollider other)
 		{
 			if (other is CirclePhysicsCollider) {
 				
 				Vector2 btwn = other.Center - Center;
 				float r = radius + ((CirclePhysicsCollider)other).radius;
-				return Vector2.SqrMagnitude(btwn) >= r * r;
+				return Vector2.SqrMagnitude(btwn) <= r * r;
 			}
 			else {
 				throw new System.NotImplementedException();
@@ -37,9 +52,9 @@ namespace Orbital
 			Gizmos.DrawWireSphere(new Vector3(Center.x, Center.y, 0), radius);
 		}
 
-		protected override void Start()
+		protected override void OnEnable()
 		{
-			base.Start();
+			base.OnEnable();
 			if (autoRadius) {
 				radius = transform.localScale.x / 2;
 			}

@@ -34,8 +34,6 @@ namespace Orbital
 
 		private void LateUpdate()
 		{
-			//acceleration += Gravity.Instance.GetGravForceOn(this);
-
 			velocity += acceleration;
 			transform.position += new Vector3(velocity.x, velocity.y);
 			acceleration = Vector2.zero;

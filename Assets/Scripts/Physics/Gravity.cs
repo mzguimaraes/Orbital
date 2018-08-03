@@ -7,7 +7,7 @@ namespace Orbital
 	public class Gravity : ScriptableObjectSingleton<Gravity>
 	{
 
-		private List<PhysicsAttractor> attractors = new List<PhysicsAttractor>();
+		readonly List<PhysicsAttractor> attractors = new List<PhysicsAttractor>();
 
 		public void AddAttractor(PhysicsAttractor attractor)
 		{
@@ -34,7 +34,7 @@ namespace Orbital
 
 			attractors.ForEach((PhysicsAttractor obj) =>
 			{
-				force += obj.GetGravForce(body);
+				force += obj.GetGravForce(body); 
 			});
 
 			return force;

@@ -7,7 +7,7 @@ namespace Orbital
 	public class PhysicsAttractor : PhysicsBody
 	{
 
-		private void Start()
+		private void OnEnable()
 		{
 			Gravity.Instance.AddAttractor(this);
 		}
