@@ -14,10 +14,10 @@ namespace Orbital {
 			if (onPlanet.Collider is CirclePhysicsCollider) {
 				CirclePhysicsCollider circleCollider = onPlanet.Collider as CirclePhysicsCollider;
 
-				Vector2 contactPt = (circleCollider.Center - player.Position).normalized *
-									((CirclePhysicsCollider)player.Collider).radius;
+				Vector2 contactPt = Phys.GetContactPoint(circleCollider, player.Collider as CirclePhysicsCollider);
 
-				Vector2 perp = Vector2.Perpendicular(circleCollider.GetNormalAtPoint(player.Position));
+				Vector2 perp = Vector2.Perpendicular(circleCollider.GetNormalAtPoint(contactPt));
+				Debug.Log(perp);
 
 				player.transform.Translate((input.y * perp));
 

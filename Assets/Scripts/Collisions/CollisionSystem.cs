@@ -11,8 +11,8 @@ namespace Orbital
 		protected CollisionSystem() { } //Singleton
 
 		protected struct CollisionInfo {
-			readonly PhysicsCollider col1;
-			readonly PhysicsCollider col2;
+			public readonly PhysicsCollider col1;
+			public readonly PhysicsCollider col2;
 
 			public CollisionInfo(PhysicsCollider l, PhysicsCollider r) {
 				col1 = l;
@@ -88,6 +88,7 @@ namespace Orbital
 							rcol.SendMessage("OnPhysicsCollisionEnter", lcol,
 											 SendMessageOptions.DontRequireReceiver);
 						}
+						ResolveCollision(info);
 					}
 					else if (atlas.Contains(info)) {
 						//collision ended
@@ -99,6 +100,19 @@ namespace Orbital
 					}
 				}
 			}
+		}
+
+		void ResolveCollision(CollisionInfo info) {
+			//Project both colliders away from each other
+
+			//Get overlap vector
+			Vector2 overlap = info.col1.GetOverlapVector(info.col2);
+
+			//resolve collision lhs
+			info.col1.PhysicsBody.AddForce(overlap);
+
+			//resolve collision rhs
+			info.col2.PhysicsBody.AddForce(-overlap);
 		}
 	}
 }

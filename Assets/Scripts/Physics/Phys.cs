@@ -20,5 +20,12 @@ namespace Orbital
 			return body;
 		}
 
+		public static Vector2 GetContactPoint(CirclePhysicsCollider lhs, CirclePhysicsCollider rhs) {
+			return lhs.Center + ((rhs.Center - lhs.Center).normalized * lhs.radius);
+		}
+
+		//Vector2 contactPt = circleCollider.Center + ((player.Position - circleCollider.Center).normalized *
+											 //((CirclePhysicsCollider)player.Collider).radius);
+
 	}
 }

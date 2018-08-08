@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mass: 1
   mu: 0.05
+  attractionActive: 1
 --- !u!23 &9275394
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -313,6 +314,7 @@ GameObject:
   - component: {fileID: 860974304}
   - component: {fileID: 860974302}
   - component: {fileID: 860974303}
+  - component: {fileID: 860974307}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Terrain
@@ -331,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dfcf371efe9e430da1a3833d0dae94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 1
+  mass: 10
   mu: 0.05
 --- !u!114 &860974303
 MonoBehaviour:
@@ -402,6 +404,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &860974307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 860974301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1c42ba37e6ee4cdca2eb36c41aefc93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1658940754
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,6 +34,17 @@ namespace Orbital
 			return (point - Center) / d;
 		}
 
+		public override Vector2 GetOverlapVector(PhysicsCollider other) {
+			//returns a vector pointing away from other collider
+			if (other is CirclePhysicsCollider) {
+				if (!Overlapping(other)) return Vector2.zero;
+				Vector2 dist = Center - ((CirclePhysicsCollider)other).Center;
+				return dist * (radius + ((CirclePhysicsCollider)other).radius - dist.magnitude);
+			} else {
+				throw new System.NotImplementedException();
+			}
+		}
+
 		public override bool Overlapping(PhysicsCollider other)
 		{
 			if (other is CirclePhysicsCollider) {

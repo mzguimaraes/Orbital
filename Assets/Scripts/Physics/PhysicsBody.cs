@@ -18,9 +18,7 @@ namespace Orbital
 		[SerializeField] protected float mu = 0.05f;
 
 		public PhysicsCollider Collider {
-			get {
-				return GetComponent<PhysicsCollider>();
-			}
+			get; protected set;
 		}
 
 		protected Vector2 velocity;
@@ -30,6 +28,7 @@ namespace Orbital
 		{
 			velocity = Vector2.zero;
 			acceleration = Vector2.zero;
+			Collider = GetComponent<PhysicsCollider>();
 		}
 
 		private void LateUpdate()
@@ -51,20 +50,6 @@ namespace Orbital
 		{
 			velocity = Vector2.zero;
 			acceleration = Vector2.zero;
-		}
-
-		private void OnPhysicsCollisionEnter(PhysicsCollider other) {
-			//TODO: reflection
-			Phys.Reflect(this, other);
-			//Debug.Log(name + " hit " + other.name);
-		}
-
-		private void OnPhysicsCollisionStay(PhysicsCollider other) {
-			//Debug.Log(name + " continues collision with " + other.name);
-		}
-
-		private void OnPhysicsCollisionExit(PhysicsCollider other) {
-			//Debug.Log(name + " ends collision with " + other.name);
 		}
 
 	}

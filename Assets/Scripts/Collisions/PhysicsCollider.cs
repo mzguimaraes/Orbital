@@ -9,14 +9,23 @@ namespace Orbital
 	{
 		public Vector2 offset = Vector2.zero;
 
-		public abstract bool Overlapping(PhysicsCollider other); 
+		public abstract bool Overlapping(PhysicsCollider other);
+		public abstract Vector2 GetOverlapVector(PhysicsCollider other);
 
 		public abstract Vector2 Center
 		{
 			get;
 		}
 
+		public PhysicsBody PhysicsBody {
+			get; protected set;
+		}
+
 		public abstract Vector2 GetNormalAtPoint(Vector2 point, bool givenAsOffset = false);
+
+		protected virtual void Awake() {
+			PhysicsBody = GetComponent<PhysicsBody>();
+		}
 
 		protected virtual void OnEnable() {
 			CollisionSystem.Instance.RegisterCollider(this);
